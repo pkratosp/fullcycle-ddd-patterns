@@ -1,10 +1,10 @@
 import { Address } from "./address";
 
 export class Customer {
-  _id: string;
-  _name: string;
-  _address!: Address;
-  _active: boolean = false;
+  private _id: string;
+  private _name: string;
+  private _address!: Address;
+  private _active: boolean = false;
 
   constructor(id: string, name: string) {
     this._id = id;
@@ -33,7 +33,16 @@ export class Customer {
     return this._address;
   }
 
+  get isActive() {
+    return this._active
+  }
+
   active() {
+
+    if(this._address === undefined) {
+      throw Error('não é possivel ativar o usuario sem um endereço definido')
+    }
+
     this._active = true;
   }
 
