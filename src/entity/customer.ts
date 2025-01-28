@@ -5,6 +5,7 @@ export class Customer {
   private _name: string;
   private _address!: Address;
   private _active: boolean = false;
+  private _rewardPoint: number = 0;
 
   constructor(id: string, name: string) {
     this._id = id;
@@ -34,13 +35,12 @@ export class Customer {
   }
 
   get isActive() {
-    return this._active
+    return this._active;
   }
 
   active() {
-
-    if(this._address === undefined) {
-      throw Error('não é possivel ativar o usuario sem um endereço definido')
+    if (this._address === undefined) {
+      throw Error("não é possivel ativar o usuario sem um endereço definido");
     }
 
     this._active = true;
@@ -60,6 +60,14 @@ export class Customer {
   }
 
   set Address(address: Address) {
-    this._address = address
+    this._address = address;
+  }
+
+  addRewardPoints(points: number) {
+    this._rewardPoint += points;
+  }
+
+  get rewardPoint() {
+    return this._rewardPoint;
   }
 }
