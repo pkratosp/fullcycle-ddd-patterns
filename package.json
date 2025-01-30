@@ -13,5 +13,11 @@
     "test": "npm run tsc && jest",
     "test:watch": "npm run tsc && jest --watch",
     "tsc": "tsc --noEmit"
+  },
+  "dependencies": {
+    "reflect-metadata": "^0.2.2",
+    "sequelize": "^6.37.5",
+    "sequelize-typescript": "^2.1.6",
+    "sqlite3": "^5.1.7"
   }
 }
