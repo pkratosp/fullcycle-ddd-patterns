@@ -12,6 +12,10 @@ export class Product {
     this.validate();
   }
 
+  get id() {
+    return this._id;
+  }
+
   changeName(name: string) {
     this._name = name;
     this.validate();
@@ -46,5 +50,9 @@ export class Product {
 
   get price() {
     return this._price;
+  }
+
+  get quantity() {
+    return this._quantity;
   }
 }
