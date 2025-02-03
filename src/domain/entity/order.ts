@@ -31,7 +31,19 @@ export class Order {
     return true;
   }
 
+  get id() {
+    return this._id;
+  }
+
+  get customerId() {
+    return this._customerId;
+  }
+
   total() {
     return this._items.reduce((acc, item) => acc + item.price, 0);
+  }
+
+  get items() {
+    return this._items;
   }
 }
