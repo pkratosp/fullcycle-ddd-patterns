@@ -38,6 +38,10 @@ export class Customer {
     return this._active;
   }
 
+  activate() {
+    this._active = true;
+  }
+
   active() {
     if (this._address === undefined) {
       throw Error("não é possivel ativar o usuario sem um endereço definido");
@@ -63,11 +67,35 @@ export class Customer {
     this._address = address;
   }
 
+  get Address() {
+    return this._address;
+  }
+
   addRewardPoints(points: number) {
     this._rewardPoint += points;
   }
 
   get rewardPoint() {
     return this._rewardPoint;
+  }
+
+  changeAddress(address: Address) {
+    this._address = address;
+  }
+
+  get street() {
+    return this._address.street;
+  }
+
+  get number() {
+    return this._address._number;
+  }
+
+  get zip() {
+    return this._address._zip;
+  }
+
+  get city() {
+    return this._address._city;
   }
 }
