@@ -8,16 +8,20 @@ describe("Order factory unit test", () => {
       customerId: randomUUID(),
       items: [
         {
-          id: randomUUID(),
+          id: randomUUID().toString(),
           name: "Product a",
-          price: randomUUID(),
-          productId: 1,
+          price: 11,
+          productId: randomUUID().toString(),
           quantity: 100,
         },
       ],
     };
 
-    const order = OrderFactory.create(orderProps);
+    const order = OrderFactory.create({
+      customerId: orderProps.customerId,
+      id: orderProps.id,
+      items: orderProps.items,
+    });
 
     expect(order.id).toBe(order.id);
     expect(order.customerId).toBe(order.customerId);
