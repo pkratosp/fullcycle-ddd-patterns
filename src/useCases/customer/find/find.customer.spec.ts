@@ -51,7 +51,6 @@ describe("Test find customer use case", () => {
 
     const response = await useCase.execute(body);
 
-    console.log(response)
     expect(response).toEqual(output);
   });
 });

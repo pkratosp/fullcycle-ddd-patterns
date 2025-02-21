@@ -9,6 +9,15 @@ export class FindCustomerUseCase {
   async execute({ id }: FindCustomerDto): Promise<OutputFindCustomerDto> {
     const customer = await this.customerRepository.find(id);
 
-    return customer;
+    return {
+      id: customer.id,
+      name: customer.name,
+      address: {
+        city: customer.city,
+        number: customer.number,
+        street: customer.street,
+        zip: customer.zip,
+      },
+    };
   }
 }
