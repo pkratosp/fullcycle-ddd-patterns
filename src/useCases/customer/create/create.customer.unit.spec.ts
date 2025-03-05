@@ -34,4 +34,21 @@ describe("Teste create customer", () => {
 
     expect(create).toEqual(output);
   });
+
+  it("should trown an error when name is missing", async () => {
+    const customerRepository = MockRepository();
+    const useCase = new CreateCustomerUseCase(customerRepository);
+
+    const input = {
+      name: "",
+      address: {
+        street: "Street 1",
+        number: 1,
+        zip: "Zipcode 1",
+        city: "City 1",
+      },
+    };
+
+    await expect(useCase.execute(input)).rejects.toThrow("Nome invalido");
+  });
 });
