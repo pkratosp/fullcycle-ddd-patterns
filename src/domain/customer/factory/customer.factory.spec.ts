@@ -17,5 +17,9 @@ describe("Customer factory unit test", () => {
     expect(customer.name).toBeDefined();
     expect(customer.id).toBeDefined();
     expect(customer.address).toBeDefined();
+    expect(customer.address.city).toBeDefined();
+    expect(customer.address.number).toBeDefined();
+    expect(customer.address.street).toBeDefined();
+    expect(customer.address.zip).toBeDefined();
   });
 });

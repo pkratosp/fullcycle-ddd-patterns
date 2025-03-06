@@ -15,13 +15,12 @@ export class CreateCustomerUseCase {
     address,
     name,
   }: CreateCustomerDto): Promise<OutputCreateCustomerDto> {
-    const _address = new Address(
-      address.street,
-      address.number,
-      address.zip,
-      address.city
+    const customer = CustomerFactory.createWithAddress(
+      name,
+      new Address(address.street, address.number, address.zip, address.city)
     );
-    const customer = CustomerFactory.createWithAddress(name, _address);
+
+    await this.customerRepository.create(customer);
 
     return {
       id: customer.id,

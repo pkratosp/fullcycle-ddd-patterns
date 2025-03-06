@@ -12,8 +12,9 @@
   },
   "scripts": {
     "dev": "nodemon src/infra/api/server.ts",
-    "test": "npm run tsc && jest",
+    "test": "npm run tsc && jest --verbose src",
     "test:watch": "npm run tsc && jest --watch",
+    "test:e2e": "npm run tsc && jest --verbose __test__",
     "tsc": "tsc --noEmit"
   },
   "dependencies": {
