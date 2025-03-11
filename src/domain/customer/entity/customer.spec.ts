@@ -18,7 +18,7 @@ describe("Customer unit tests", () => {
   it("should throw error when name is empty and id is empty", () => {
     expect(() => {
       new Customer("", "");
-    }).toThrow("customer: Nome invalido,customer: Id obrigatório");
+    }).toThrow("customer: Id obrigatório,customer: Nome invalido");
   });
 
   it("should change name", () => {
