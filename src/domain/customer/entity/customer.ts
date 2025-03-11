@@ -1,16 +1,22 @@
+import { Entity } from "../../@shared/entity/entity.abstract";
+import { NotificationError } from "../../@shared/notification/notification.error";
 import { Address } from "../value-object/address";
 
-export class Customer {
-  private _id: string;
+export class Customer extends Entity {
   private _name: string;
   private _address!: Address;
   private _active: boolean = false;
   private _rewardPoint: number = 0;
 
   constructor(id: string, name: string) {
-    this._id = id;
+    super();
+    this.id = id;
     this._name = name;
     this.validate();
+
+    if (this.notification.hasErrors()) {
+      throw new NotificationError(this.notification.getErrors());
+    }
   }
 
   get id() {
@@ -56,10 +62,16 @@ export class Customer {
 
   validate() {
     if (this._name.length === 0) {
-      throw new Error("Nome invalido");
+      this.notification.addError({
+        context: "customer",
+        message: "Nome invalido",
+      });
     }
-    if (this._id.length === 0) {
-      throw new Error("Id obrigatório");
+    if (this.id.length === 0) {
+      this.notification.addError({
+        context: "customer",
+        message: "Id obrigatório",
+      });
     }
   }
 

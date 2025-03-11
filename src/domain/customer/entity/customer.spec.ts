@@ -1,3 +1,4 @@
+import { NotificationError } from "../../@shared/notification/notification.error";
 import { Address } from "../value-object/address";
 import { Customer } from "./customer";
 
@@ -5,13 +6,13 @@ describe("Customer unit tests", () => {
   it("should throw error when id is empty", () => {
     expect(() => {
       new Customer("", "jhon doe");
-    }).toThrow("Id obrigatório");
+    }).toThrow(NotificationError);
   });
 
   it("should throw error when name is empty", () => {
     expect(() => {
       new Customer("123", "");
-    }).toThrow("Nome invalido");
+    }).toThrow(NotificationError);
   });
 
   it("should change name", () => {

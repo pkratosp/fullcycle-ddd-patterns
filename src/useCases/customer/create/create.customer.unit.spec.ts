@@ -1,3 +1,4 @@
+import { NotificationError } from "../../../domain/@shared/notification/notification.error";
 import { CreateCustomerUseCase } from "./create.customer";
 
 const MockRepository = () => {
@@ -49,6 +50,6 @@ describe("Teste create customer", () => {
       },
     };
 
-    await expect(useCase.execute(input)).rejects.toThrow("Nome invalido");
+    await expect(useCase.execute(input)).rejects.toThrow(NotificationError);
   });
 });
