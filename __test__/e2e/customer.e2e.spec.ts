@@ -61,5 +61,13 @@ describe("E2E test for customer", () => {
 
     expect(response.statusCode).toEqual(200);
     expect(response.body.customers).toHaveLength(2);
+
+    const responseXML = await request(app)
+      .get("/customer")
+      .set("Accept", "application/xml");
+    expect(responseXML.statusCode).toBe(200);
+    expect(responseXML.text).toContain(
+      `<?xml version=\"1.0\" encoding=\"UTF-8\"?>`
+    );
   });
 });
